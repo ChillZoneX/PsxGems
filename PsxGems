@@ -1,0 +1,56 @@
+local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
+
+local UI = Material.Load({
+     Title = "Pet Simulator X Dupe",
+     Style = 24,
+     SizeX = 500,
+     SizeY = 200,
+     Theme = "Dark"
+})
+
+local Page = UI.New({
+    Title = "Dupe Gems",
+
+
+})
+
+Page.Button({
+    Text = "Dupe Gems",
+    Callback = function()
+        function comma_value(amount)
+
+  local formatted = amount
+
+  while true do  
+
+    formatted, k = string.gsub(formatted, "^(-?%d+)(%d%d%d)", '%1,%2')
+
+    if (k == 0) then
+
+      break
+
+    end
+
+  end
+
+  return formatted
+
+end
+
+ 
+
+local diamonds = game.Players.LocalPlayer.PlayerGui.Main.Right.Diamonds.Amount
+
+local old = diamonds.Text
+
+local oldNumber = string.gsub(old, ",", "")
+
+local newNumber = oldNumber * 2
+
+local new = comma_value(newNumber)
+
+local newString = tostring(new)
+
+diamonds.Text = newString
+    end
+})
